@@ -1,0 +1,148 @@
+@import "../../utils/variables.scss";
+
+.header {
+    max-width: 1680px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 14px 0 16px;
+    background-color: $COLOR_WHITE;
+    grid-area: header;
+
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    &__date {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 148%;
+        display: flex;
+        color: $COLOR_DATE;
+    }
+
+    &__analytics-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 49px;
+        margin: 0 189px 0 86px;
+    }
+
+    &__new-call {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__quantity-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 148%;
+        display: flex;
+        color: $COLOR_NEW-CALL;
+
+        &_new {
+            color: $COLOR_GREEN;
+            padding-left: 3px;
+        }
+
+        &_span {
+            color: $COLOR_GREEN;
+            padding-left: 3px;
+        }
+
+        &_all {
+            color: $COLOR_GREEN;
+            padding-left: 3px;
+        }
+    }
+
+    &__progress-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        max-width: 156px;
+        margin-top: 7px;
+        border-radius: 12px;
+    }
+
+    &__progress {
+        background-color: $COLOR_PROGRESS;
+        height: 6px;
+        width: 88px;
+    }
+
+    &__progress-green {
+        height: 6px;
+        width: 68px;
+        background-color: $COLOR_GREEN;
+    }
+
+    &__progress-yellow {
+        height: 6px;
+        width: 68px;
+        background-color: $COLOR_YELLOW;
+    }
+
+    &__progress-red {
+        height: 6px;
+        width: 68px;
+        background-color: $COLOR_RED;
+    }
+
+    &__quantity-percent {
+        padding-left: 3px;
+        color: $COLOR_YELLOW;
+    }
+
+    &__conversion-qty {
+        padding-left: 3px;
+        color: $COLOR_RED;
+    }
+
+    &__search-img {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__users {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 56px;
+        gap: 40px;
+    }
+
+    &__user-client {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 140%;
+        display: flex;
+        color: $COLOR_DATE;
+    }
+
+    &__arrow-btn {
+        width: 24px;
+        height: 24px;
+        padding-left: 4px;
+    }
+
+    &__user-operator {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+    }
+}

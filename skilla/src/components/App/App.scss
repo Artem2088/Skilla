@@ -1,0 +1,28 @@
+@import '../../utils/variables';
+
+.page {
+    font-family: $font-stack;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+
+    &__container {
+        background-color: $MAIN_COLOR;
+        max-width: 1920px;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        display: grid;
+        grid-template-columns: 240px 1680px;
+        grid-template-rows: 64px 1fr;
+        grid-template-areas:
+            'aside header'
+            'aside main'
+        ;
+        margin: 0 auto;
+    }
+}

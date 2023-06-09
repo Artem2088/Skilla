@@ -1,0 +1,86 @@
+@import '../../utils/variables.scss';
+
+.sidebar {
+    max-width: 240px;
+    width: 100%;
+    height: 100vh;
+    background-color: $COLOR_SIDEBAR;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: aside;
+
+    &__container {
+        max-height: 963px;
+    }
+
+    &__logo {
+        width: 109px;
+        height: 28px;
+    }
+
+    &__nav {
+        margin: 32px 0 64px;
+    }
+
+    &__box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 0 17px;
+        cursor: pointer;
+    }
+
+    &__img {
+        width: 24px;
+        height: 24px;
+    }
+
+    &__span {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        color: $COLOR_SIDEBAR-TEXT;
+    }
+
+    &__button-plus {
+        height: 52px;
+        width: 200px;
+        border-radius: 4px;
+        background-color: $COLOR_SIDEBAR-BTN;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        padding: 14px 20px;
+    }
+
+    &__button-span {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 148%;
+        color: $COLOR_WHITE;
+    }
+
+    &__img-plus {
+        width: 24px;
+        height: 24px;
+        margin-left: 17px;
+    }
+
+    &__button-alert {
+        margin-top: 32px;
+    }
+
+    &__img-alert {
+        width: 24px;
+        height: 24px;
+        margin-left: 31px;
+    }
+}
