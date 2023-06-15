@@ -1,0 +1,70 @@
+@import '../../utils//variables.scss';
+
+.item {
+    padding: 17px 0 16px;
+    width: 100%;
+    border-top: 1px solid $COLOR_BORDER;
+    cursor: pointer;
+
+&__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1400px;
+}
+&__type {
+    margin-left: 40px;
+    width: 24px;
+    height: 24px;
+}
+&__span-time {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: $COLOR_NEW-CALL;
+    margin-left: 32px;
+}
+&__member {
+    width: 32x;
+    height: 32px;
+    margin-left: 48px;
+}
+&__call {
+    width: 246px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: $COLOR_NEW-CALL;
+    margin-left: 96px;
+}
+&__source {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: $COLOR_PLACHOLDER;
+    margin-left: 80px;
+}
+&__eval {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: $COLOR_RED;
+    margin-left: 153px;
+    width: 190px;
+}
+&__duration {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: $COLOR_NEW-CALL;
+    margin-left: 317px;
+}
+}

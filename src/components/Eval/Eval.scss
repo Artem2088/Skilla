@@ -1,0 +1,90 @@
+@import '../../utils//variables.scss';
+
+.eval-excellent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+    }
+
+    &__point-green {
+        width: 8px;
+        height: 8px;
+        background-color: $COLOR_GREEN-POINT;
+        border-radius: 50%;
+    }
+
+    &__box {
+        padding: 6px 8px;
+        width: 70px;
+        background: $COLOR_LIGHT-GREEN;
+        border: 1px solid $COLOR_BORDER-GREEN;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__span {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        color: $COLOR_GREEN;
+    }
+}
+
+.eval-well {
+    &__point-gray {
+        background-color: $COLOR_GREY-POINT;
+    }
+
+    &__box {
+        border: 1px solid $COLOR_GREY-POINT;
+        background: $COLOR_ICON-SECONDARY;
+    }
+
+    &__span {
+        color: $COLOR_NEW-CALL;
+    }
+}
+
+.eval-bad {
+    &__point-red {
+        background-color: $COLOR_RED;
+    }
+
+    &__box {
+        border: 1px solid $COLOR_RED;
+        background: $COLOR_LIGHT-RED;
+    }
+
+    &__span {
+        color: $COLOR_RED;
+    }
+}
+
+.eval-recognize {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 24px 11px;
+    border: 1px solid $COLOR_ACCENT;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 122px;
+    &__span {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        text-align: center;
+        color: $COLOR_SIDEBAR-BTN;
+    }
+}

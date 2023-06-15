@@ -12,6 +12,7 @@ import knowledge from "../../utils/icons/local_library_black_24dp.svg";
 import settings from "../../utils/icons/settings-24px.svg";
 import plus from "../../utils/icons/plus.svg";
 import alert from "../../utils/icons/alert.svg";
+import activ from "../../utils/icons/activ.svg"
 
 const Sidebar = () => {
   return (
@@ -34,6 +35,7 @@ const Sidebar = () => {
           <li className='sidebar__box'>
             <img src={calls} alt='Звонки' className='sidebar__img' />
             <span className='sidebar__span'>Звонки</span>
+            <img src={activ} alt='текущая'className='sidebar__activ'/>
           </li>
           <li className='sidebar__box'>
             <img
