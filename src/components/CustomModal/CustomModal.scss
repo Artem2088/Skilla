@@ -1,0 +1,66 @@
+@import '../../utils/variables.scss';
+
+.modal {
+    display: none;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 7px 0;
+    }
+
+    &__title {
+        color: $COLOR_ACCENT;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+        opacity: 0.87;
+        padding-left: 7px;
+    }
+
+    &__lists {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+    }
+
+    &__item {
+        cursor: pointer;
+        background-color: $COLOR_WHITE;
+        padding-left: 7px;
+    }
+
+    &__item:hover {
+        background-color: $COLOR_ACCENT_HOVER;
+    }
+
+    &__button {
+        display: flex;
+        width: 100%;
+        color: $COLOR_INITIAL_TEXT;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+    }
+
+    &__button:hover {
+        color: $COLOR_NEW-CALL;
+    }
+
+    &_active {
+        display: block;
+        // position: absolute;
+        // top: 0%;
+        // right: 0%;
+        border-radius: 4px;
+        border: 1px solid #EAF0FA;
+        background: #FFF;
+        box-shadow: 0px 0px 26px 0px rgba(233, 237, 243, 0.80);
+        max-width: 204px;
+        width: 100%;
+    }
+}

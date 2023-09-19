@@ -1,10 +1,11 @@
-@import '../../utils/variables.scss';
+@import "../../utils/variables.scss";
 
 .filter {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: 7px;
+    position: relative;
 
     &__container {
         display: flex;
@@ -66,15 +67,40 @@
         justify-content: center;
     }
 
-    &__arrow {
+    &__arrow-left {
         width: 16px;
         height: 24px;
         margin-right: 12px;
+        background-image: url("../../images/icons/keyboard_arrow.svg");
+    }
+
+    &__arrow-rigth {
+        transform: rotate(180deg);
+        margin-left: 12px;
+        margin-right: 0;
+        background-image: url("../../images/icons/keyboard_arrow.svg");
+    }
+
+    &__arrow-left:hover {
+        background-image: url("../../images/icons/arrow_left-activ.svg");
+    }
+
+    &__calendar-button {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
     }
 
     &__calendar {
         width: 16px;
         height: 18px;
+        background-image: url("../../images/icons/icon-calendar.svg");
+    }
+
+    &__calendar:hover {
+        background-image: url("../../images/icons/calendar-hover.png");
+        z-index: 1;
+        cursor: pointer;
     }
 
     &__date-text {
@@ -87,12 +113,6 @@
         margin-left: 8px;
     }
 
-    &__arrow-rigth {
-        transform: rotate(180deg);
-        margin-left: 12px;
-        margin-right: 0;
-    }
-
     &__input-img {
         width: 16px;
         height: 16px;
@@ -100,10 +120,38 @@
 
     &__input {
         max-width: 458px;
-        width: 100%;
-        height: 48px;
+        width: 482px;
+        height: 40px;
         margin-right: 150px;
-        padding: 14px 0 14px 12px;
+        padding-left: 24px;
+        background: url("../../images/icons/search.svg") no-repeat center left;
+        border: none;
+        outline: none;
+    }
+
+    &__input:hover {
+        background: url("../../images/icons/search-activ.svg") no-repeat center left;
+    }
+
+    &__input:focus {
+        background: url("../../images/icons/search.svg") no-repeat center left;
+        flex-shrink: 0;
+        border-radius: 48px;
+        border: 1px solid $COLOR_ACCENT;
+        background: $COLOR_WHITE;
+        outline: $COLOR_ACCENT;
+    }
+
+    &__input:disabled {
+        background: url("../../images/icons/search.svg") no-repeat center left;
+        border: 1px solid $COLOR_BORDER;
+        outline: $COLOR_BORDER;
+    }
+
+    &__lists {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
     }
 
     &__input::placeholder {
@@ -118,6 +166,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        position: relative;
     }
 
     &__sort-btn {
@@ -131,11 +180,40 @@
         opacity: 0.87;
         margin-right: 32px;
         gap: 4px;
+        background: url("../../images/icons/keyboard_arrow_down.svg") no-repeat center right;
+        padding-right: 23px;
     }
+
+    &__sort-btn:hover {
+        color: $COLOR_ACCENT;
+        background: url("../../images/icons/arrow-down-activ.svg") no-repeat center right;
+    }
+
+    &__sort-btn:focus {
+        background: url("../../images/icons/arrow-visited.svg") no-repeat center right 2%;
+    }
+
 
     &__sort-btn:last-child {
         margin: 0;
     }
 
-    &__sort-img {}
+    &__sort-close {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 148%;
+        color: $COLOR_PLACHOLDER;
+        opacity: 0.87;
+        padding-right: 49px;
+        background: url('../../images/icons/close-disabled.svg') no-repeat center left 84%;
+        position: absolute;
+        right: 58%;
+        top: 9px;
+    }
+
+    &__sort-close:hover {
+        color: $COLOR_ACCENT;
+        background: url('../../images/icons/close-active.svg') no-repeat center left 84%;
+    }
 }

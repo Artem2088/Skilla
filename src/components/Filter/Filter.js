@@ -1,11 +1,46 @@
 import "./Filter.scss";
-import plusFilter from "../../utils/icons/plus-filter.svg";
-import arrow from "../../utils/icons/keyboard_arrow.svg";
-import calendar from "../../utils/icons/icon-calendar.svg";
-import search from "../../utils/icons/search.svg";
-import arrowDwn from "../../utils/icons/keyboard_arrow_down.svg";
+import plusFilter from "../../images/icons/plus-filter.svg";
+import CustomModal from "../CustomModal/CustomModal";
+import { FILTER_ITEMS, DATE_ITEMS, TYPE_ITEMS } from "../../utils/Constant";
+import { useEffect, useState } from "react";
 
-const Filter = () => {
+const Filter = ({ handleChange, title, each, removeFilter }) => {
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalArray, setModalArray] = useState([]);
+  const [visible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (title) {
+      switch (title) {
+        case "3 дня":
+          setModalTitle(title);
+          setModalArray(DATE_ITEMS);
+          break;
+        case "Все типы":
+          setModalTitle(title);
+          setModalArray(TYPE_ITEMS);
+          break;
+        default:
+          return;
+      }
+    }
+    return;
+  }, [handleChange]);
+
+  useEffect(() => {
+    if (!each) {
+      return;
+    }
+    toggle();
+  }, [each]);
+
+  const toggle = () => setIsVisible(!visible);
+
+  const handleClick = async () => {
+    await removeFilter();
+    toggle();
+  };
+
   return (
     <section className='filter'>
       <div className='filter__container'>
@@ -22,81 +57,58 @@ const Filter = () => {
             </button>
           </div>
           <div className='filter__date'>
-            <button className='filter__arrow'>
-              <img
-                src={arrow}
-                alt='стрелка влево'
-                className='filter__arrow-img'
-              />
+            <button className='filter__arrow-left' type='button' />
+            <button
+              className='filter__calendar-button'
+              type='button'
+              onClick={(e) => handleChange(e)}
+              data-id='calendar'
+              value={"3 дня"}
+            >
+              <span className='filter__calendar' />
+              <span className='filter__date-text'>3 дня</span>
             </button>
-            <img src={calendar} alt='календарь' className='filter__calendar' />
-            <span className='filter__date-text'>3 дня</span>
-            <button className='filter__arrow filter__arrow-rigth'>
-              <img
-                src={arrow}
-                alt='стрелка влево'
-                className='filter__arrow-img'
-              />
-            </button>
+            <button
+              className='filter__arrow-left filter__arrow-rigth'
+              type='button'
+            />
           </div>
         </div>
         <div className='filter__sort-box'>
-          <img src={search} alt='поиск' className='filter__input-img' />
           <input
             type='text'
             className='filter__input'
             placeholder='Поиск по звонкам'
           />
-          <button type='button' className='filter__sort-btn'>
-            Все типы
-            <img
-              src={arrowDwn}
-              alt='стрелка вниз'
-              className='filter__sort-img'
-            />
-          </button>
-          <button type='button' className='filter__sort-btn'>
-            Все сотрудники
-            <img
-              src={arrowDwn}
-              alt='стрелка вниз'
-              className='filter__sort-img'
-            />
-          </button>
-          <button type='button' className='filter__sort-btn'>
-            Все звонки
-            <img
-              src={arrowDwn}
-              alt='стрелка вниз'
-              className='filter__sort-img'
-            />
-          </button>
-          <button type='button' className='filter__sort-btn'>
-            Все источники
-            <img
-              src={arrowDwn}
-              alt='стрелка вниз'
-              className='filter__sort-img'
-            />
-          </button>
-          <button type='button' className='filter__sort-btn'>
-            Все оценки
-            <img
-              src={arrowDwn}
-              alt='стрелка вниз'
-              className='filter__sort-img'
-            />
-          </button>
-          <button type='button' className='filter__sort-btn'>
-            Все ошибки
-            <img
-              src={arrowDwn}
-              alt='стрелка вниз'
-              className='filter__sort-img'
-            />
-          </button>
+          {visible ? (
+            <button className='filter__sort-close' onClick={handleClick}>
+              Сбросить фильтры
+            </button>
+          ) : (
+            ""
+          )}
+          <ul className='filter__lists'>
+            {FILTER_ITEMS.map((item, index) => (
+              <li key={index} className='filter__item'>
+                <button
+                  type='button'
+                  className='filter__sort-btn'
+                  onClick={(e) => handleChange(e)}
+                  data-title={item}
+                >
+                  {item}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
+      <CustomModal
+        title={modalTitle}
+        array={modalArray}
+        handleChange={handleChange}
+        each={each}
+      />
     </section>
   );
 };

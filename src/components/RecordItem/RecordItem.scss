@@ -1,0 +1,67 @@
+@import '../../utils//variables.scss';
+
+.record {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 352px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 48px;
+    background: $COLOR_BORDER;
+
+    &__span-time {
+        color: $COLOR_NEW-CALL;
+        text-align: right;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 145%;
+        padding-right: 12px;
+    }
+
+    &__btn-play {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        background: url('../../images/icons/play.svg') no-repeat center;
+    }
+
+    &__btn-play:focus {
+        background: url('../../images/icons/pause.svg') no-repeat center;
+    }
+
+    &__progress {
+        width: 164px;
+        height: 4px;
+        flex-shrink: 0;
+        border-radius: 50px;
+        background: $COLOR_GREY-POINT;
+        margin: 0 18px 0 8px;
+    }
+
+    &__btn-span {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        background: url('../../images/icons/download-disabled.svg') no-repeat center;
+    }
+
+    &__btn-span:hover {
+        background: url('../../images/icons/download.svg') no-repeat center;
+    }
+
+
+    &__btn-close {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        background: url('../../images/icons/close-disabled.svg') no-repeat center;
+        margin-left: 12px;
+    }
+
+    &__btn-close:hover {
+        background: url('../../images/icons/close-active.svg') no-repeat center;
+    }
+}

@@ -1,7 +1,7 @@
 import "./Header.scss";
-import search from "../../utils/icons/search.svg";
-import arrowDown from "../../utils/icons/keyboard_arrow_down.svg";
-import avatar from "../../utils/icons/avatar.svg";
+import search from "../../images/icons/search.svg";
+import arrowDown from "../../images/icons/keyboard_arrow_down.svg";
+import avatar from "../../images//icons/avatar.svg";
 import { DATE, MONTHS } from "../../utils/Constant";
 import { useEffect, useState } from "react";
 
@@ -10,30 +10,31 @@ const Header = () => {
   const [months, setMonths] = useState(0);
   const [weekday, setWeekday] = useState(0);
 
-  useEffect(()=> {
-    let current = new Date;
+  useEffect(() => {
+    let current = new Date();
     let currentMonths = current.getMonth();
     let currentDate = current.getDate();
     let currentData = current.getDay();
+
     for (let key in DATE) {
-      if((currentData - 1) == key){
-        setWeekday(DATE[key])
+      if (currentData == key) {
+        setWeekday(DATE[key]);
       }
     }
-    setDate(currentDate)
-    for(let key in MONTHS) {
-      if(currentMonths == key){
-        setMonths(MONTHS[key])
+    setDate(currentDate);
+    for (let key in MONTHS) {
+      if (currentMonths == key) {
+        setMonths(MONTHS[key]);
       }
     }
-  }, [])
-
-
+  }, []);
 
   return (
     <header className='header'>
       <div className='header__container'>
-        <span className='header__date'>{weekday}, {date} {months}</span>
+        <span className='header__date'>
+          {weekday},{date} {months}
+        </span>
         <ul className='header__analytics-box'>
           <li className='header__new-call'>
             <div className='header__quantity-text'>
