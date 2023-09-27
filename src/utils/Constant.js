@@ -84,3 +84,8 @@ export const SUBHEADER_ITEMS = [
   "Оценка",
   "Длительность",
 ];
+
+const currentInit = new Date();
+export const months = currentInit.getMonth();
+export const date = currentInit.getDate();
+export const year = currentInit.getFullYear();

@@ -1,8 +1,20 @@
 import "./Items.scss";
 import Item from "../Item/Item";
 import { SUBHEADER_ITEMS } from "../../utils/Constant";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
-const Items = ({ calls, loading, getRecord, record }) => {
+const Items = ({ getRecord, record }) => {
+  const [lists, setLists] = useState([]);
+  const calls = useSelector((state) => state.lists.lists);
+  const loading = useSelector((state) => state.lists.status);
+
+  useEffect(() => {
+    for (let key of calls) {
+      setLists(key.results);
+    }
+  }, [calls]);
+
   return (
     <section className='items'>
       <div className='items__container'>
@@ -14,11 +26,12 @@ const Items = ({ calls, loading, getRecord, record }) => {
           ))}
         </ul>
         <ul className='items__lists'>
-          {loading ? (
-            calls.map((each, index) => (
+          {loading == "resolved" ? (
+            lists &&
+            lists.map((each, index) => (
               <Item
                 key={index}
-                each={each}
+                element={each}
                 getRecord={getRecord}
                 record={record}
               />

@@ -1,42 +1,63 @@
 import { useEffect, useState } from "react";
 import "./RecordItem.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGetRecord } from "../../store/listsSlice";
 
-const RecordItem = ({ getRecord, each, record, toHHMMSS }) => {
+const RecordItem = ({ element, toHHMMSS }) => {
+  const dispatch = useDispatch();
+  const record = useSelector((state) => state.lists.record);
   const [playing, setPlaying] = useState(false);
-  const audio = new Audio(record);
+  const [rec, setRec] = useState("");
+  const audio = new Audio(rec);
 
   useEffect(() => {
-    audio.load();
-    toHHMMSS(each.time);
-  }, []);
+    if (!record) {
+      return;
+    }
+    for (let key of record) {
+      const objectURL = URL.createObjectURL(key);
+      element.src = objectURL;
+      console.log(key);
+      setRec(element.src);
+    }
+  }, [dispatch]);
 
-  useEffect(() => {
-    audio.addEventListener("play", () => setPlaying(false));
-    return () => {
-      audio.removeEventListener("play", () => setPlaying(false));
-    };
-  }, []);
+  // useEffect(() => {
+  //   audio.load();
+  //   toHHMMSS(element.time);
+  // }, [record]);
 
-  useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  }, [playing]);
+  // useEffect(() => {
+  //   audio.addEventListener("play", () => setPlaying(false));
+  //   return () => {
+  //     audio.removeEventListener("play", () => setPlaying(false));
+  //   };
+  // }, []);
 
-  const toggle = () => setPlaying(!playing);
+  // useEffect(() => {
+  //   playing ? audio.play() : audio.pause();
+  // }, [playing]);
+
+  // const toggle = () => setPlaying(!playing);
 
   const stopSound = () => {
     audio.pause();
     audio.currentTime = 0;
   };
 
-  const handleClick = async (item) => {
-    await getRecord(item);
-    toggle();
+  const handleClick = async (element) => {
+    dispatch(fetchGetRecord(element));
+
+    // toggle();
   };
 
   return (
     <div className='record'>
-      <span className='record__span-time'>{toHHMMSS(each.time)}</span>
-      <button className='record__btn-play' onClick={() => handleClick(each)} />
+      <span className='record__span-time'>{toHHMMSS(element.time)}</span>
+      <button
+        className='record__btn-play'
+        onClick={() => handleClick(element)}
+      />
       <span className='record__progress'></span>
       <button className='record__btn-span' />
       {playing ? (

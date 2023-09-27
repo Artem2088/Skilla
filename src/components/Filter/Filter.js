@@ -3,11 +3,16 @@ import plusFilter from "../../images/icons/plus-filter.svg";
 import CustomModal from "../CustomModal/CustomModal";
 import { FILTER_ITEMS, DATE_ITEMS, TYPE_ITEMS } from "../../utils/Constant";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { handleChange, removeFilter } from "../../store/listsSlice";
 
-const Filter = ({ handleChange, title, each, removeFilter }) => {
+const Filter = () => {
   const [modalTitle, setModalTitle] = useState("");
   const [modalArray, setModalArray] = useState([]);
   const [visible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
+  const each = useSelector((state) => state.lists.each);
+  const title = useSelector((state) => state.lists.title);
 
   useEffect(() => {
     if (title) {
@@ -25,7 +30,7 @@ const Filter = ({ handleChange, title, each, removeFilter }) => {
       }
     }
     return;
-  }, [handleChange]);
+  }, [title]);
 
   useEffect(() => {
     if (!each) {
@@ -37,7 +42,7 @@ const Filter = ({ handleChange, title, each, removeFilter }) => {
   const toggle = () => setIsVisible(!visible);
 
   const handleClick = async () => {
-    await removeFilter();
+    dispatch(removeFilter());
     toggle();
   };
 
@@ -61,9 +66,9 @@ const Filter = ({ handleChange, title, each, removeFilter }) => {
             <button
               className='filter__calendar-button'
               type='button'
-              onClick={(e) => handleChange(e)}
+              onClick={(e) => dispatch(handleChange(e.currentTarget.dataset))}
               data-id='calendar'
-              value={"3 дня"}
+              data-value={"3 дня"}
             >
               <span className='filter__calendar' />
               <span className='filter__date-text'>3 дня</span>
@@ -93,8 +98,11 @@ const Filter = ({ handleChange, title, each, removeFilter }) => {
                 <button
                   type='button'
                   className='filter__sort-btn'
-                  onClick={(e) => handleChange(e)}
-                  data-title={item}
+                  onClick={(e) =>
+                    dispatch(handleChange(e.currentTarget.dataset))
+                  }
+                  data-id={item}
+                  data-value={item}
                 >
                   {item}
                 </button>
@@ -103,12 +111,7 @@ const Filter = ({ handleChange, title, each, removeFilter }) => {
           </ul>
         </div>
       </div>
-      <CustomModal
-        title={modalTitle}
-        array={modalArray}
-        handleChange={handleChange}
-        each={each}
-      />
+      <CustomModal title={modalTitle} array={modalArray} />
     </section>
   );
 };

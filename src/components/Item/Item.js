@@ -6,24 +6,24 @@ import callSkip from "../../images/icons/call-skip.svg";
 import avatarMember from "../../images/icons/avatar-member.svg";
 import RecordItem from "../RecordItem/RecordItem";
 
-const Item = ({ each, getRecord, record }) => {
+const Item = ({ element, getRecord, record }) => {
   const [calltype, setCallType] = useState(1);
   const [time, setTime] = useState("");
 
   useEffect(() => {
-    setTime(each.date?.slice(11, 16));
-    if (each.in_out == 1) {
+    setTime(element.date?.slice(11, 16));
+    if (element.in_out == 1) {
       setCallType(callIn);
     }
-    if (each.in_out == 0) {
+    if (element.in_out == 0) {
       setCallType(callOut);
     }
-    if (each.status == "Не дозвонился") {
+    if (element.status == "Не дозвонился") {
       setCallType(callSkip);
     }
 
-    toHHMMSS(each.time);
-  }, [each]);
+    toHHMMSS(element.time);
+  }, [element]);
 
   const toHHMMSS = (secs) => {
     let sec_num = parseInt(secs, 10);
@@ -43,24 +43,24 @@ const Item = ({ each, getRecord, record }) => {
         <img src={calltype} alt='тип' className='item__type' />
         <span className='item__span-time'>{time}</span>
         <img
-          src={each.person_avatar ? each.person_avatar : avatarMember}
+          src={element.person_avatar ? element.person_avatar : avatarMember}
           alt='сотрудник'
           className='item__member'
         />
-        <span className='item__call'>{each.from_number}</span>
+        <span className='item__call'>{element.from_number}</span>
         <span className='item__source'>
-          {each.source ? each.source : "Нет данных"}
+          {element.source ? element.source : "Нет данных"}
         </span>
-        <span className='item__eval'>{each.errors}</span>
-        {each.record ? (
+        <span className='item__eval'>{element.errors}</span>
+        {element.record ? (
           <RecordItem
             getRecord={getRecord}
-            each={each}
+            element={element}
             record={record}
             toHHMMSS={toHHMMSS}
           />
         ) : (
-          <span className='item__duration'>{toHHMMSS(each.time)}</span>
+          <span className='item__duration'>{toHHMMSS(element.time)}</span>
         )}
       </div>
     </section>

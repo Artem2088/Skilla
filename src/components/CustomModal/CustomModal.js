@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import "./CustomModal.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { handleChangeEach } from "../../store/listsSlice";
 
-const CustomModal = ({ title, array, handleChange }) => {
+const CustomModal = ({ array }) => {
   const [position, setPosition] = useState({});
   const [active, setIsActive] = useState(false);
+  const dispatch = useDispatch();
+  const title = useSelector((state) => state.lists.title);
 
   let styles = {
     cal: {
@@ -36,7 +40,7 @@ const CustomModal = ({ title, array, handleChange }) => {
   }, [title]);
 
   const handleChangeModal = (e) => {
-    handleChange(e);
+    dispatch(handleChangeEach(e.currentTarget.dataset.each));
     setIsActive(false);
   };
 

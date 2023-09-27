@@ -1,39 +1,39 @@
 import { URL, TOKEN } from "../../src/utils/Constant";
 
-let inOut = "";
+// let inOut = "";
 
-const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  Promise.reject(`${res.status} ${res.statusText}`);
-};
+// const checkResponse = (res) => {
+//   if (res.ok) {
+//     return res.json();
+//   }
+//   Promise.reject(`${res.status} ${res.statusText}`);
+// };
 
-const checkType = (sortType) => {
-  if (sortType >= 0) {
-    inOut = `&in_out=${sortType}`;
-  }
-  if (sortType == null) {
-    inOut = "";
-  }
-  return inOut;
-};
+// const checkType = (sortType) => {
+//   if (sortType >= 0) {
+//     inOut = `&in_out=${sortType}`;
+//   }
+//   if (sortType == null) {
+//     inOut = "";
+//   }
+//   return inOut;
+// };
 
-export const getList = async (date, endDate, sortType) => {
-  checkType(sortType);
+// export const getList = async (date, endDate, sortType) => {
+//   checkType(sortType);
 
-  const res = await fetch(
-    `${URL}/getList?date_start=${date}&date_end=${endDate}${inOut}`,
-    {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${TOKEN}`,
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  return checkResponse(res);
-};
+//   const res = await fetch(
+//     `${URL}/getList?date_start=${date}&date_end=${endDate}${inOut}`,
+//     {
+//       method: "POST",
+//       headers: {
+//         authorization: `Bearer ${TOKEN}`,
+//         "Content-Type": "application/json",
+//       },
+//     }
+//   );
+//   return checkResponse(res);
+// };
 
 export const getRecordUser = async (id_record, id_partner) => {
   const res = await fetch(
